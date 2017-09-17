@@ -72,6 +72,7 @@ if(!$accessToken->isLongLived()) {
     }
     echo '<h2>Long-lived User Access Token</h2>';
     echo '<strong>You have to add this user access token in api-key.ini</strong>';
+    echo '<strong>Then visit the link: https://your-domain.com/social-sync/examples/facebook_post.php to test the Facebook API posting feed correctly.</strong>';
     var_dump($accessToken->getValue());
 }
 
