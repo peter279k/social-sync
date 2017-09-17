@@ -4,7 +4,6 @@
 */
 
 require_once __DIR__.'/../vendor/autoload.php';
-session_start();
 
 $key = parse_ini_file(__DIR__.'/../api-key.ini');
 $appId = $key['app_id'];
@@ -77,11 +76,10 @@ if(!$accessToken->isLongLived()) {
 }
 
 echo '<h2>Long-lived User Access Token</h2>';
-echo '<strong>You have to add this user access token in api-key.ini</strong>';
-echo '<strong>Then visit the link: https://your-domain.com/social-sync/examples/facebook_post.php to test the Facebook API posting feed correctly.</strong>';
+echo '<h3>You have to add this user access token in api-key.ini</h3>';
+echo '<p><strong>Then visit the link: https://your-domain.com/social-sync/examples/facebook_post.php to test the Facebook API posting feed correctly.</strong></p>';
 var_dump($accessToken->getValue());
 
-$_SESSION['fb_access_token'] = (string)$accessToken;
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
 //header('Location: https://example.com/members.php');
