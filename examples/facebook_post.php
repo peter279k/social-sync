@@ -3,8 +3,6 @@
 * This PHP program is to post the feed via Facebook graph API.
 */
 
-ini_set('display_errors', 1);
-
 require_once __DIR__.'/../vendor/autoload.php';
 
 $key = parse_ini_file(__DIR__.'/../api-key.ini');
@@ -23,4 +21,6 @@ $response = $fb->post('/me/feed', [
     $userToken,
 ]);
 
+// more details about accessing the $response object
+// https://developers.facebook.com/docs/php/FacebookResponse/5.0.0
 var_dump($response);
