@@ -2,7 +2,8 @@
 /*
 * This PHP program is to post the feed via Facebook graph API.
 */
-session_start();
+
+ini_set('display_errors', 1);
 
 $key = parse_ini_file(__DIR__.'/../api-key.ini');
 $appId = $key['app_id'];
