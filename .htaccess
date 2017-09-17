@@ -1,8 +1,5 @@
+RedirectMatch 404 /\.git
 <Files "api-key.ini">
 Order Allow,Deny
 Deny from all
 </Files>
-<Directorymatch "^/.*/\.git/">
-Order deny,allow
-Deny from all
-</Directorymatch>
