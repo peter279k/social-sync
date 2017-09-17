@@ -74,11 +74,12 @@ if(!$accessToken->isLongLived()) {
       echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
       exit;
     }
-    echo '<h2>Long-lived User Access Token</h2>';
-    echo '<strong>You have to add this user access token in api-key.ini</strong>';
-    echo '<strong>Then visit the link: https://your-domain.com/social-sync/examples/facebook_post.php to test the Facebook API posting feed correctly.</strong>';
-    var_dump($accessToken->getValue());
 }
+
+echo '<h2>Long-lived User Access Token</h2>';
+echo '<strong>You have to add this user access token in api-key.ini</strong>';
+echo '<strong>Then visit the link: https://your-domain.com/social-sync/examples/facebook_post.php to test the Facebook API posting feed correctly.</strong>';
+var_dump($accessToken->getValue());
 
 $_SESSION['fb_access_token'] = (string)$accessToken;
 // User is logged in with a long-lived access token.
