@@ -21,8 +21,8 @@ This is the simplest way to sync the feed for the multiple social websites.
 # Usage
 
 - Set the [cloudmailin](http://docs.cloudmailin.com/getting_started/) service.
-- set the ```receive.php``` to the receiving mail endpoint.
-- visit the ```facebook_user_token.php``` from web browser to get the short-lived user access token and add it in ```api-key.ini```.
+- Set the ```receive.php``` to the receiving mail endpoint.
+- Visit the ```facebook_user_token.php``` from web browser to get the short-lived user access token and add it in ```api-key.ini```.
 - Refer this [link](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension/) to get the long-lived token.
 - Remember that the Facebook user access token is valid for 60 days.After 60 days, you have to request the new access token from ```facebook_user_token.php```.
 - In order to build the service easily, we use the Composer to manage the required packages.
