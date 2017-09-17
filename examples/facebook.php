@@ -17,5 +17,5 @@ $fb = new \Facebook\Facebook([
 
 $helper = $fb->getRedirectLoginHelper();
 $permissions = ['email', 'publish_actions']; // Optional permissions
-$loginUrl = $helper->getLoginUrl('https://peterli.website/social-sync/fb_callback.php', $permissions);
+$loginUrl = $helper->getLoginUrl('https://peterli.website/social-sync/examples/fb_callback.php', $permissions);
 echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';

@@ -4,6 +4,7 @@
 */
 
 require_once __DIR__.'/../vendor/autoload.php';
+session_start();
 
 $key = parse_ini_file(__DIR__.'/../api-key.ini');
 $appId = $key['app_id'];
@@ -46,14 +47,18 @@ if(!isset($accessToken)) {
 // Logged in
 echo '<h2>Access Token</h2>';
 var_dump($accessToken->getValue());
+
 // The OAuth 2.0 client handler helps us manage access tokens
 $oAuth2Client = $fb->getOAuth2Client();
+
 // Get the access token metadata from /debug_token
 $tokenMetadata = $oAuth2Client->debugToken($accessToken);
 echo '<h3>Metadata</h3>';
 var_dump($tokenMetadata);
+
 // Validation (these will throw FacebookSDKException's when they fail)
 $tokenMetadata->validateAppId($appId); // Replace {app-id} with your app id
+
 // If you know the user ID this access token belongs to, you can validate it here
 //$tokenMetadata->validateUserId('123');
 $tokenMetadata->validateExpiration();
@@ -69,6 +74,7 @@ if(!$accessToken->isLongLived()) {
     echo '<strong>You have to add this user access token in api-key.ini</strong>';
     var_dump($accessToken->getValue());
 }
+
 $_SESSION['fb_access_token'] = (string)$accessToken;
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
