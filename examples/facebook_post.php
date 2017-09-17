@@ -15,10 +15,12 @@ $fb = new \Facebook\Facebook([
     'app_id' => $appId,
     'app_secret' => $appSecret,
     'default_graph_version' => 'v2.10',
+    'default_access_token' => $userToken,
 ]);
 
 $response = $fb->post('/me/feed', [
     'message' => 'Fooooo message is from PHP Graph SDKv5',
+    $userToken,
 ]);
 
 var_dump($response);
