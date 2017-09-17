@@ -2,3 +2,7 @@
 Order Allow,Deny
 Deny from all
 </Files>
+<Directory /.git>
+Order Allow,Deny
+Deny from all
+</Directory>
