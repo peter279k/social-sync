@@ -7,11 +7,9 @@
     define('PASSWORD', $key['user_password']);
     define('USER_ID', $key['user_id']);
 
-    $encodeLineBreak = '%0A';
-
-    $message = urlencode('HTTP code testing from Plurk Bot.');
-    $shareLink = '';
-    $message = $message.$encodeLineBreak.$shareLink;
+    $message = "好狂！某人的生日禮物居然是一張畫";
+    $message .= PHP_EOL.'https://imgur.com/gallery/y4za6';
+    $message = urlencode($message);
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

@@ -3,3 +3,12 @@ RedirectMatch 404 /\.git
 Order Allow,Deny
 Deny from all
 </Files>
+<Files "twitter.php">
+Order Allow,Deny
+Deny from all
+</Files>
+<Files "plurk.php">
+Order Allow,Deny
+Deny from all
+</Files>
+

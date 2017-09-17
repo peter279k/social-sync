@@ -17,7 +17,8 @@ $fb = new \Facebook\Facebook([
 ]);
 
 $response = $fb->post('/me/feed', [
-    'message' => 'Fooooo message is from PHP Graph SDKv5',
+    'message' => 'upgrading the facebook-php-sdk from-v3.x to v5.x',
+    'link' => 'https://www.sammyk.me/upgrading-the-facebook-php-sdk-from-v3-x-to-v5',
     $userToken,
 ]);
 

@@ -48,3 +48,10 @@ user_id="user_id"
 - Complete the service building. Have fun!
 
 - P.S: The PHP program in ```examples``` folder just present the posting feed examples.
+
+- The socail api lists references
+
+
+> - [Twitter API reference](https://stackoverflow.com/questions/12916539/simplest-php-example-for-retrieving-user-timeline-with-twitter-api-version-1-1/15314662#15314662)
+> - [Facebook API reference](https://developers.facebook.com/docs/php/FacebookResponse/5.0.0)
+> - [Plurk Bot sample code](https://gist.github.com/pingyen/53380) 
