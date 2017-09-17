@@ -1,0 +1,6 @@
+{
+    "require": {
+        "facebook/graph-sdk": "^5.6",
+        "j7mbo/twitter-api-php": "^1.0"
+    }
+}
