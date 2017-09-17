@@ -24,4 +24,5 @@ $response = $fb->post('/me/feed', [
 
 // more details about accessing the $response object
 // https://developers.facebook.com/docs/php/FacebookResponse/5.0.0
-var_dump($response);
+$httpCode = $response->getHttpStatusCode();
+echo $httpCode;
