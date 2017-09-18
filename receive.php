@@ -21,16 +21,20 @@ $reply = isset($_POST['reply_plain']) ? $_POST['reply_plain']:'no-reply-plain';
 
 if($to !== $toEmailAddress) {
     echo 'the to email address is not allowed here';
+    file_put_contents('/home/peter/log.txt', $plain);
+    file_put_contents('/home/peter/log.txt', $html, FILE_APPEND);
+    file_put_contents('/home/peter/log.txt', 'to', FILE_APPEND);
     exit;
 }
 if($from !== $fromEmailAddress) {
     echo 'the from email address is not allowed here';
+    file_put_contents('/home/peter/log.txt', $plain);
+    file_put_contents('/home/peter/log.txt', $html, FILE_APPEND);
+    file_put_contents('/home/peter/log.txt', 'from', FILE_APPEND);
     exit;
 }
 
 echo 'it is successfully received by'.$fromEmailAddress.'!';
-file_put_contents('/home/peter/log.txt', $plain);
-file_put_contents('/home/peter/log.txt', $html, FILE_APPEND);
 // receive and validate the email source(CloudMailin)
 
 /*
