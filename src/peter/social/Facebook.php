@@ -9,46 +9,51 @@ namespace peter\social;
 class Facebook implements SocailInterface {
 
     private $message = '';
+    private $link = '';
     private $appId = '';
     private $appSecret = '';
     private $userAccessToken = '';
-    private $curlResource = null;
-
-    public function iniCurl() {
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_COOKIEJAR, '/tmp/cookie.txt');
-        curl_setopt($ch, CURLOPT_COOKIEFILE, '/tmp/cookie.txt');
-        $this->setCurlResource($ch);
-    }
-
-    public function setCurlResource($ch) {
-
-        $this->curlResource = $ch;
-    }
-
-    public function closeCurl() {
-
-        curl_close($this->getCurlResource());
-    }
-
-    public function getCurlResource() {
-
-        return $this->curlResource;
-    }
+    private $postField = [];
+    private $fb = null;
 
     public function postFeed(PostFeed $feed) {
 
         $settings = $feed->getSettings();
         $this->message = $feed->getMessage();
-        $this->userId = $settings['app_id'];
-        $this->userName = $settings['app_secret'];
-        $this->userPassword = $settings['user_access_token'];
-        $this->iniCurl();
-        $curlResource = $this->doLogin();
+        $this->link = $feed->getLink();
+        $this->appId = $settings['app_id'];
+        $this->appSecret = $settings['app_secret'];
+        $this->userAccessToken = $settings['user_access_token'];
+        $this->iniFacebook();
         $result = $this->doPostFeed();
         $feed->setHttpStatusCode($result[1]);
         $feed->setResponseMessage($result[0]);
+    }
+
+    private function iniFacebook() {
+
+        $fb = new \Facebook\Facebook([
+            'app_id' => $appId,
+            'app_secret' => $appSecret,
+            'default_graph_version' => 'v2.10',
+            'default_access_token' => $userToken,
+        ]);
+        $this->fb = $fb;
+    }
+
+    private function doPostFeed() {
+
+        $this->postField['message'] = $this->message;
+        $this->postField[] = $this->userAccessToken;
+        if($this->link !== '') {
+            $this->postField['link'] = $this->link;
+        }
+
+        $response = $this->fb->post('/me/feed', $this->postField);
+
+        return [
+            $response->getBody(),
+            $response->getHttpStatusCode(),
+        ];
     }
 }

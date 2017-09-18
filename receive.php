@@ -9,14 +9,30 @@ require_once __DIR__.'/src/autoloader.php';
 use peter\social\PostFeed;
 
 $message = '';
+$email = __DIR__.'/api-key.ini';
+$emailAddress = parse_ini_file($email)['email_address'];
+$to = isset($_POST['envelope']['to']) ? $_POST['envelope']['to']:'no-to-address';
+$subject = isset($_POST['headers']['Subject']) ? $_POST['headers']['Subject']:'no-subject';
+$plain = isset($_POST['plain']) ? $_POST['plain']:'no-plain-text';
+$html = isset($_POST['html']) ? $_POST['html']:'no-html-string';
+$reply = isset($_POST['reply_plain']) ? $_POST['reply_plain']:'no-reply-plain';
+
+if($to !== $emailAddress) {
+    echo 'the user email address is not allowed here';
+    exit;
+}
+
+echo 'it is successfully received!';
 // receive and validate the email source(CloudMailin)
 
+/*
 // parse the api-key.ini file to get the socail website credentials.
 $apiKey = parse_ini_file('./api-key.ini', true);
 
 // sync and post feed to Twitter, Facebook and Plurk.
 $feed = new PostFeed();
 $feed->setMessage($message);
+$feed->setMessage($link);
 
 // Facebook
 $serviceName = 'Facebook';
@@ -44,3 +60,4 @@ $feed->setSettings($plurkSettings);
 $feed->postFeed();
 $httpCode = $feed->getHttpStatusCode();
 $responseMsg = $feed->getResponseMessage();
+*/
