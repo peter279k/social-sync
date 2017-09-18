@@ -10,19 +10,27 @@ use peter\social\PostFeed;
 
 $message = '';
 $email = __DIR__.'/api-key.ini';
-$emailAddress = parse_ini_file($email)['email_address'];
+$toEmailAddress = parse_ini_file($email)['to_email_address'];
+$fromEmailAddress = parse_ini_file($email)['from_email_address'];
+$from = isset($_POST['envelope']['from']) ? $_POST['envelope']['from']:'no-from-address';
 $to = isset($_POST['envelope']['to']) ? $_POST['envelope']['to']:'no-to-address';
 $subject = isset($_POST['headers']['Subject']) ? $_POST['headers']['Subject']:'no-subject';
 $plain = isset($_POST['plain']) ? $_POST['plain']:'no-plain-text';
 $html = isset($_POST['html']) ? $_POST['html']:'no-html-string';
 $reply = isset($_POST['reply_plain']) ? $_POST['reply_plain']:'no-reply-plain';
 
-if($to !== $emailAddress) {
-    echo 'the user email address is not allowed here';
+if($to !== $toEmailAddress) {
+    echo 'the to email address is not allowed here';
+    exit;
+}
+if($from !== $fromEmailAddress) {
+    echo 'the from email address is not allowed here';
     exit;
 }
 
-echo 'it is successfully received!';
+echo 'it is successfully received by'.$fromEmailAddress.'!';
+file_put_contents('log.txt', $plain);
+file_put_contents('log.txt', $html, FILE_APPEND);
 // receive and validate the email source(CloudMailin)
 
 /*
