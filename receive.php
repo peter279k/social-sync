@@ -29,8 +29,8 @@ if($from !== $fromEmailAddress) {
 }
 
 echo 'it is successfully received by'.$fromEmailAddress.'!';
-file_put_contents('log.txt', $plain);
-file_put_contents('log.txt', $html, FILE_APPEND);
+file_put_contents('/home/peter/log.txt', $plain);
+file_put_contents('/home/peter/log.txt', $html, FILE_APPEND);
 // receive and validate the email source(CloudMailin)
 
 /*
