@@ -3,7 +3,6 @@
 * This is the program to receive the mailing contents from CloudMailin(https://www.cloudmailin.com)
 */
 
-require_once __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/src/autoloader.php';
 
 use peter\social\PostFeed;
