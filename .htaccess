@@ -1,3 +1,5 @@
+DirectoryIndex receive.php
+
 RedirectMatch 404 /\.git
 <Files "api-key.ini">
 Order Allow,Deny
