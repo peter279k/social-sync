@@ -20,22 +20,17 @@ $plain = isset($_POST['plain']) ? $_POST['plain']:'no-plain-text';
 $html = isset($_POST['html']) ? $_POST['html']:'no-html-string';
 $reply = isset($_POST['reply_plain']) ? $_POST['reply_plain']:'no-reply-plain';
 
-file_put_contents('/home/peter/log.txt', $plain);
-file_put_contents('/home/peter/log.txt', $html, FILE_APPEND);
-file_put_contents('/home/peter/log.txt', 'to', FILE_APPEND);
+file_put_contents('./log.txt', $plain);
+file_put_contents('./log.txt', $html, FILE_APPEND);
+file_put_contents('./log.txt', 'to', FILE_APPEND);
 
 if($to !== $toEmailAddress) {
     echo 'the to email address is not allowed here';
-    file_put_contents('/home/peter/log.txt', $plain);
-    file_put_contents('/home/peter/log.txt', $html, FILE_APPEND);
-    file_put_contents('/home/peter/log.txt', 'to', FILE_APPEND);
     exit;
 }
+
 if($from !== $fromEmailAddress) {
     echo 'the from email address is not allowed here';
-    file_put_contents('/home/peter/log.txt', $plain);
-    file_put_contents('/home/peter/log.txt', $html, FILE_APPEND);
-    file_put_contents('/home/peter/log.txt', 'from', FILE_APPEND);
     exit;
 }
 
