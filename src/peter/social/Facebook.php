@@ -6,7 +6,7 @@
 
 namespace peter\social;
 
-class Facebook implements SocailInterface {
+class Facebook implements SocialInterface {
 
     private $message = '';
     private $link = '';

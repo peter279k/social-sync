@@ -28,7 +28,7 @@ class PostFeed {
             return (new $className)->postFeed($this);
         }
 
-        throw new RuntimeException('cannot support this social service');
+        throw new \RuntimeException('cannot support this social service');
     }
 
     public function setServiceName($name) {

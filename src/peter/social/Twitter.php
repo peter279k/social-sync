@@ -6,7 +6,7 @@
 
 namespace peter\social;
 
-class Twitter implements SocailInterface {
+class Twitter implements SocialInterface {
 
     private $message = '';
     private $link = '';
