@@ -1,6 +1,6 @@
 <?php
 /*
-* This is the program to receive
+* This is the program to receive the mail via MailGun routes
 */
 
 require_once __DIR__.'/src/autoloader.php';
@@ -27,12 +27,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
 
-$bodyHtml = isset($_POST['body-html']) ? $_POST['body-html']:'';
 $bodyPlain = isset($_POST['body-plain']) ? $_POST['body-plain']:'';
 
-echo 'message body: '.$bodyHtml.PHP_EOL.$bodyPlain;
+if($bodyPlain == '') {
+    echo 'the message body is plain.';
+    exit;
+}
 
-// receive and validate the email source(CloudMailin)
+echo 'message body:'.$bodyPlain.PHP_EOL;
+var_dump(parse_ini_string($bodyPlain, true));
 
 /*
 // parse the api-key.ini file to get the socail website credentials.
@@ -41,7 +44,7 @@ $apiKey = parse_ini_file('./api-key.ini', true);
 // sync and post feed to Twitter, Facebook and Plurk.
 $feed = new PostFeed();
 $feed->setMessage($message);
-$feed->setMessage($link);
+$feed->setLink($link);
 
 // Facebook
 $serviceName = 'Facebook';
