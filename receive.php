@@ -52,9 +52,10 @@ $feed->setLink($link);
 // Facebook
 if($facebook === 'yes') {
     $serviceName = 'Facebook';
-    $fbSettings = $apiKey[$serviceName];
+    foreach($apiKey[$serviceName] as $key => $value) {
+        $feed->setSettings($key, $value);
+    }
     $feed->setServiceName($serviceName);
-    $feed->setSettings($fbSettings);
     $feed->postFeed();
     $httpCode = $feed->getHttpStatusCode();
     $responseMsg = $feed->getResponseMessage();
@@ -63,9 +64,10 @@ if($facebook === 'yes') {
 // Twitter
 if($twitter === 'yes') {
     $serviceName = 'Twitter';
-    $twitterSettings = $apiKey[$serviceName];
+    foreach($apiKey[$serviceName] as $key => $value) {
+        $feed->setSettings($key, $value);
+    }
     $feed->setServiceName($serviceName);
-    $feed->setSettings($twitterSettings);
     $feed->postFeed();
     $httpCode = $feed->getHttpStatusCode();
     $responseMsg = $feed->getResponseMessage();
@@ -74,9 +76,10 @@ if($twitter === 'yes') {
 // Plurk
 if($plurk === 'yes') {
     $serviceName = 'Plurk';
-    $plurkSettings = $apiKey[$serviceName];
+    foreach($apiKey[$serviceName] as $key => $value) {
+        $feed->setSettings($key, $value);
+    }
     $feed->setServiceName($serviceName);
-    $feed->setSettings($plurkSettings);
     $feed->postFeed();
     $httpCode = $feed->getHttpStatusCode();
     $responseMsg = $feed->getResponseMessage();
