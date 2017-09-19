@@ -21,7 +21,7 @@ class PostFeed {
             'Plurk',
         ];
 
-        if(in_array($social)) {
+        if(in_array($this->serviceName, $social)) {
             $index = array_search($this->serviceName, $social);
             $className = 'peter\\social\\'.$social[$index];
 
