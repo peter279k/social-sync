@@ -43,7 +43,7 @@ class PostFeed {
 
     public function setSettings($key, $value) {
 
-        $settings[$key] = $value;
+        $this->settings[$key] = $value;
     }
 
     public function getSettings() {
