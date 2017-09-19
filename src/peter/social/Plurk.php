@@ -53,6 +53,7 @@ class Plurk implements SocialInterface {
     }
 
     private function doLogin() {
+
         $ch = $this->getCurlResource();
         curl_setopt($ch, CURLOPT_URL, 'https://www.plurk.com/login');
         $response = curl_exec($ch);
@@ -65,6 +66,7 @@ class Plurk implements SocialInterface {
     }
 
     private function doPostFeed() {
+
         $ch = $this->getCurlResource();
         curl_setopt($ch, CURLOPT_URL, 'https://www.plurk.com/TimeLine/addPlurk');
         curl_setopt($ch, CURLOPT_POSTFIELDS, 'qualifier=says&content='.$this->message.'&lang=tr_ch&no_comments=0&uid='.$this->userId);

@@ -33,10 +33,10 @@ class Facebook implements SocialInterface {
     private function iniFacebook() {
 
         $fb = new \Facebook\Facebook([
-            'app_id' => $appId,
-            'app_secret' => $appSecret,
+            'app_id' => $this->appId,
+            'app_secret' => $this->appSecret,
             'default_graph_version' => 'v2.10',
-            'default_access_token' => $userToken,
+            'default_access_token' => $this->userToken,
         ]);
         $this->fb = $fb;
     }
