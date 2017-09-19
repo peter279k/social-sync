@@ -12,6 +12,7 @@ class PostFeed {
     private $message = '';
     private $responseMessage = '';
     private $httpCode = 200;
+    private $link = '';
 
     public function postFeed() {
         $social = [
@@ -78,5 +79,15 @@ class PostFeed {
     public function getResponseMessage() {
 
         return $this->responseMessage;
+    }
+
+    public function setLink($link) {
+
+        $this->link = $link;
+    }
+
+    public function getLink() {
+
+        return $this->link;
     }
 }
