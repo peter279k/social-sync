@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if($event != 'delivered') {
-    echo 'We cannot identify this events!';
+    echo 'We cannot identify this events!'.$event;
     exit;
 }
 var_dump($_POST['message-headers']);
