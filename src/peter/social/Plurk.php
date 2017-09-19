@@ -13,6 +13,7 @@ class Plurk implements SocialInterface {
     private $userName = '';
     private $userPassword = '';
     private $curlResource = null;
+    private $link = '';
 
     public function iniCurl() {
 
@@ -42,6 +43,8 @@ class Plurk implements SocialInterface {
 
         $settings = $feed->getSettings();
         $this->message = urlencode($feed->getMessage());
+        $this->link = $feed->getLink() === '' ? '' : PHP_EOL.$feed->getLink();
+        $this->message .= $this->link;
         $this->userId = $settings['user_id'];
         $this->userName = $settings['user_name'];
         $this->userPassword = $settings['user_password'];
