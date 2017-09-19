@@ -9,16 +9,28 @@ use peter\social\PostFeed;
 
 header("Content-type: text/plain");
 
-$from = '';
-$apiKey = parse_ini_file(__DIR__.'/api-key.ini')['api_key'];
+$mailGun = parse_ini_file(__DIR__.'/api-key.ini');
+$apiKey = $mailGun['api_key'];
+$sender = $mailGun['sender'];
+$from = $mailGun['sandbox_address'];
 $event = null;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    var_dump($_POST);
+    $isSender = (isset($_POST['sender']) ? $_POST['sender']:'') === $sender;
+    $isFrom = (isset($_POST['recipient']) ? $_POST['recipient']:'') === $from;
+    if(!$isSender && !$isFrom) {
+        echo 'The sender and from address is invalid!';
+        exit;
+    }
 } else {
     echo 'We do not accept this request method!';
     exit;
 }
+
+$bodyHtml = isset($_POST['body-html']) ? $_POST['body-html']:'';
+$bodyPlain = isset($_POST['body-plain']) ? $_POST['body-plain']:'';
+
+echo 'message body: '.$bodyHtml.PHP_EOL.$bodyPlain;
 
 // receive and validate the email source(CloudMailin)
 
