@@ -34,10 +34,13 @@ if($bodyPlain == '') {
     exit;
 }
 
-echo 'message body:'.$bodyPlain.PHP_EOL;
-var_dump(parse_ini_string($bodyPlain, true));
+$iniList = parse_ini_string($bodyPlain, true);
+$facebook = $iniList['facebook']['post'];
+$twitter = $iniList['twitter']['post'];
+$plurk = $iniList['plurk']['post'];
+$message = $iniList['feed']['content'];
+$link = $iniList['feed']['link'];
 
-/*
 // parse the api-key.ini file to get the socail website credentials.
 $apiKey = parse_ini_file('./api-key.ini', true);
 
@@ -47,29 +50,34 @@ $feed->setMessage($message);
 $feed->setLink($link);
 
 // Facebook
-$serviceName = 'Facebook';
-$fbSettings = $apiKey[$serviceName];
-$feed->setServiceName($serviceName);
-$feed->setSettings($fbSettings);
-$feed->postFeed();
-$httpCode = $feed->getHttpStatusCode();
-$responseMsg = $feed->getResponseMessage();
+if($facebook === 'yes') {
+    $serviceName = 'Facebook';
+    $fbSettings = $apiKey[$serviceName];
+    $feed->setServiceName($serviceName);
+    $feed->setSettings($fbSettings);
+    $feed->postFeed();
+    $httpCode = $feed->getHttpStatusCode();
+    $responseMsg = $feed->getResponseMessage();
+}
 
 // Twitter
-$serviceName = 'Twitter';
-$twitterSettings = $apiKey[$serviceName];
-$feed->setServiceName($serviceName);
-$feed->setSettings($twitterSettings);
-$feed->postFeed();
-$httpCode = $feed->getHttpStatusCode();
-$responseMsg = $feed->getResponseMessage();
+if($twitter === 'yes') {
+    $serviceName = 'Twitter';
+    $twitterSettings = $apiKey[$serviceName];
+    $feed->setServiceName($serviceName);
+    $feed->setSettings($twitterSettings);
+    $feed->postFeed();
+    $httpCode = $feed->getHttpStatusCode();
+    $responseMsg = $feed->getResponseMessage();
+}
 
 // Plurk
-$serviceName = 'Plurk';
-$plurkSettings = $apiKey[$serviceName];
-$feed->setServiceName($serviceName);
-$feed->setSettings($plurkSettings);
-$feed->postFeed();
-$httpCode = $feed->getHttpStatusCode();
-$responseMsg = $feed->getResponseMessage();
-*/
+if($plurk === 'yes') {
+    $serviceName = 'Plurk';
+    $plurkSettings = $apiKey[$serviceName];
+    $feed->setServiceName($serviceName);
+    $feed->setSettings($plurkSettings);
+    $feed->postFeed();
+    $httpCode = $feed->getHttpStatusCode();
+    $responseMsg = $feed->getResponseMessage();
+}
