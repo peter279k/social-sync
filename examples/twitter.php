@@ -19,7 +19,7 @@ $settings = [
     'consumer_secret' => $consumerSecret
 ];
 
-$message = "This tweet is to test Twitter API for myself!";
+$message = "就只是測試! @peter279k #hash_tag1";
 
 // URL for REST request, see: https://dev.twitter.com/docs/api/1.1
 $url = 'https://api.twitter.com/1.1/statuses/update.json';

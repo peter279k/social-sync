@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $isSender = (isset($_POST['sender']) ? $_POST['sender']:'') === $sender;
     $isFrom = (isset($_POST['recipient']) ? $_POST['recipient']:'') === $from;
     if(!$isSender && !$isFrom) {
-        echo 'The sender and from address is invalid!';
+        echo 'The sender and from email address is invalid!';
         exit;
     }
 } else {
@@ -28,6 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $bodyPlain = isset($_POST['body-plain']) ? $_POST['body-plain']:'';
+$bodyPlain = str_replace('\r\n', PHP_EOL, $bodyPlain);
 
 if($bodyPlain == '') {
     echo 'the message body is plain.';
