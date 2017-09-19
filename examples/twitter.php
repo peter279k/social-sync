@@ -10,7 +10,6 @@ $oauthToken = $apiKey['oauth_access_token'];
 $oauthTokenSecret = $apiKey['oauth_access_token_secret'];
 $consumerSecret = $apiKey['consumer_secret'];
 $consumerKey = $apiKey['consumer_key'];
-$userName = $apiKey['user_name_block'];
 
 // Set access tokens here - see: https://dev.twitter.com/apps
 $settings = [
@@ -20,8 +19,7 @@ $settings = [
     'consumer_secret' => $consumerSecret
 ];
 
-$message = "Ha!the someone's birtyday gift";
-$message .= PHP_EOL.'https://imgur.com/gallery/y4za6';
+$message = "This tweet is to test Twitter API for myself!";
 
 // URL for REST request, see: https://dev.twitter.com/docs/api/1.1
 $url = 'https://api.twitter.com/1.1/statuses/update.json';
